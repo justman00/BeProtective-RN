@@ -933,6 +933,15 @@
     react-native-safe-area-view "^0.14.1"
     react-native-screens "^1.0.0 || ^1.0.0-alpha"
 
+"@types/expo__vector-icons@^9.0.1":
+  version "9.0.1"
+  resolved "https://registry.yarnpkg.com/@types/expo__vector-icons/-/expo__vector-icons-9.0.1.tgz#46a0a9701cb69e632a05b87aafa7b0f537919896"
+  integrity sha512-xcdtdQSojtUO0mSuVDCP01cyqAXhZCIMGN1jXuqfA6DbOIg5cIcIBLIC5vhiGP0vR5gdviSyIHgPf4NR2d3wOg==
+  dependencies:
+    "@types/react" "*"
+    "@types/react-native" "*"
+    "@types/react-native-vector-icons" "*"
+
 "@types/fbemitter@^2.0.32":
   version "2.0.32"
   resolved "https://registry.yarnpkg.com/@types/fbemitter/-/fbemitter-2.0.32.tgz#8ed204da0f54e9c8eaec31b1eec91e25132d082c"
@@ -964,6 +973,22 @@
   version "6.5.3"
   resolved "https://registry.yarnpkg.com/@types/qs/-/qs-6.5.3.tgz#1c3b71b091eaeaf5924538006b7f70603ce63d38"
   integrity sha512-Jugo5V/1bS0fRhy2z8+cUAHEyWOATaz4rbyLVvcFs7+dXp5HfwpEwzF1Q11bB10ApUqHf+yTauxI0UXQDwGrbA==
+
+"@types/react-native-vector-icons@*":
+  version "6.4.1"
+  resolved "https://registry.yarnpkg.com/@types/react-native-vector-icons/-/react-native-vector-icons-6.4.1.tgz#d0862f3eb97bbe5720ab604f2f10ee07dacb31ef"
+  integrity sha512-2C9jyyJKEjzX0C4nP+9rNNjEhutWwalkRdaSTEYtNjUkkkTk68WGG2hgjrcBjdm4Gn1Vi9OgUd+FR8GNmCyp+A==
+  dependencies:
+    "@types/react" "*"
+    "@types/react-native" "*"
+
+"@types/react-native@*":
+  version "0.60.3"
+  resolved "https://registry.yarnpkg.com/@types/react-native/-/react-native-0.60.3.tgz#38bd4d871edd0369f595513872bb00bd4f7e7145"
+  integrity sha512-VjXawSlRG6l620tXB2dzYIwwXfzOZrl4kYHuX09EF0W9QFw/vwH7n7mp+0aFrwlr8ZOkWX/SZFPp6osyRpTGtg==
+  dependencies:
+    "@types/prop-types" "*"
+    "@types/react" "*"
 
 "@types/react-native@^0.57.65":
   version "0.57.65"
