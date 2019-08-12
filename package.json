@@ -29,8 +29,8 @@
   },
   "devDependencies": {
     "@types/expo__vector-icons": "^9.0.1",
-    "@types/react": "^16.8.23",
-    "@types/react-native": "^0.57.65",
+    "@types/react": "^16.9.1",
+    "@types/react-native": "^0.60.4",
     "babel-preset-expo": "^6.0.0",
     "prettier": "^1.18.2",
     "typescript": "^3.4.5"
