@@ -6,6 +6,7 @@ import { Region } from '../components/map'
 export default function useMap(
   region: Region,
   setRegion: React.Dispatch<React.SetStateAction<Region>>,
+  setAddress?: React.Dispatch<React.SetStateAction<Location.Address>>,
 ) {
   const map = React.useRef()
 
@@ -20,10 +21,23 @@ export default function useMap(
 
       // handle no permission (granted)
 
-      await findMe()
+      const { latitude, longitude } = await findMe()
+
+      if (setAddress) {
+        await getAddress(latitude, longitude)
+      }
     }
     helper()
   }, [])
+
+  // to think more aboyt how to implement the get address funcitonality, might do an api call as well
+  async function getAddress(latitude, longitude) {
+    const address = await Location.reverseGeocodeAsync({ longitude, latitude })
+    console.log(address)
+    if (address.length) {
+      setAddress(address[0])
+    }
+  }
 
   async function findMe() {
     const {
@@ -36,6 +50,8 @@ export default function useMap(
     map.current.animateToRegion(myRegion, 1000)
 
     setRegion(myRegion)
+
+    return myRegion
   }
 
   return { findMe, map, region }

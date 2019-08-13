@@ -1,5 +1,6 @@
 import React from 'react'
 import MapView from 'react-native-maps'
+import * as Location from 'expo-location'
 
 import useMap from '../../hooks/useMap'
 import { Container, Title, MapContainer } from './styles/AddressStyled'
@@ -19,9 +20,18 @@ const SF = {
   longitudeDelta: 0.0421,
 }
 
-const Address = () => {
+interface Props {
+  regionRef: any
+}
+
+const Address = (props: Props) => {
+  const [address, setAddress] = React.useState<null | Location.Address>(null)
   const [region, setRegion] = React.useState<Region>(SF)
-  const { map, findMe } = useMap(region, setRegion)
+  const { map } = useMap(region, setRegion, setAddress)
+
+  React.useEffect(() => {
+    props.regionRef.current = region
+  }, [region])
 
   return (
     <Container>
