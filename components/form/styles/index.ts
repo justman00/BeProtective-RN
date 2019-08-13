@@ -19,3 +19,10 @@ export const SubmitText = styled.Text`
   color: #fff;
   font-size: 24px;
 `
+
+export const GoBack = styled.TouchableOpacity`
+  position: absolute;
+  top: 20;
+  left: 20;
+  z-index: 50;
+`

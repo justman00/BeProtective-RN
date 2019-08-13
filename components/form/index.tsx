@@ -1,7 +1,8 @@
 import React from 'react'
 import { ScrollView, KeyboardAvoidingView } from 'react-native'
+import { Ionicons } from '@expo/vector-icons'
 import { NavigationProp } from '../../screens/MapScreen'
-import { Container, SubmitButton, SubmitText } from './styles'
+import { Container, SubmitButton, SubmitText, GoBack } from './styles'
 import Header from './Header'
 import Address from './Address'
 import Description from './Description'
@@ -19,6 +20,10 @@ const Form = (props: Props) => {
     // api call through redux fn(inputRef.current, regionRef.current)
   }
 
+  function goBack() {
+    props.navigation.goBack()
+  }
+
   return (
     <ScrollView style={{ flex: 1 }}>
       <KeyboardAvoidingView
@@ -28,10 +33,18 @@ const Form = (props: Props) => {
         keyboardVerticalOffset={5}
       >
         <Container>
+          <GoBack onPress={goBack}>
+            <Ionicons
+              // @ts-ignore
+              name='ios-close-circle'
+              size={44}
+              color='#fff'
+            />
+          </GoBack>
           <Header uri={props.image} />
           <Address regionRef={regionRef} />
           <Description inputRef={inputRef} />
-          <SubmitButton onPress={() => {}}>
+          <SubmitButton onPress={handleSubmit}>
             <SubmitText>Submit</SubmitText>
           </SubmitButton>
         </Container>
