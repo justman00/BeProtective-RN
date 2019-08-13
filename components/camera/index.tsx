@@ -23,7 +23,13 @@ function Camera(props: Props) {
   } = useCamera()
 
   function goBack() {
-    props.navigation.goBack()
+    props.navigation.navigate('Map')
+  }
+
+  function goToForm() {
+    props.navigation.navigate('Form', {
+      image: image.uri,
+    })
   }
 
   if (hasPermissions === null) {
@@ -32,7 +38,9 @@ function Camera(props: Props) {
     return <Text>No access to camera</Text>
   } else {
     if (showImage) {
-      return <PictureComponent image={image} setBack={setBack} />
+      return (
+        <PictureComponent image={image} setBack={setBack} goToForm={goToForm} />
+      )
     } else {
       return (
         <CameraComponent

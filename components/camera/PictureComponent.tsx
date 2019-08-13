@@ -18,9 +18,10 @@ type Image = {
 interface Props {
   image: Image
   setBack: () => void
+  goToForm: () => void
 }
 
-function PictureComponent({ image, setBack }: Props) {
+function PictureComponent({ image, setBack, goToForm }: Props) {
   return (
     <Container>
       <Image source={{ uri: image.uri }} />
@@ -34,7 +35,7 @@ function PictureComponent({ image, setBack }: Props) {
         />
         <Text color='#fff'>Back</Text>
       </ButtonStyled>
-      <ButtonStyled background='#fff' position='right'>
+      <ButtonStyled background='#fff' position='right' onPress={goToForm}>
         <Text color='black'>Next</Text>
         <Ionicons
           // @ts-ignore

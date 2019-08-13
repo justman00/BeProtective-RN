@@ -1,21 +1,20 @@
 import React from 'react'
 import MapView from 'react-native-maps'
-import * as Location from 'expo-location'
-import * as Permissions from 'expo-permissions'
 import { Ionicons } from '@expo/vector-icons'
 import MarkerComponent from './Marker'
 import { NavigationProp } from '../../screens/MapScreen'
 import { Container, styles, StyledButton, StyledText } from './styles'
+import useMap from '../../hooks/useMap'
 
-type Region = {
+interface Props {
+  navigation: NavigationProp
+}
+
+export type Region = {
   latitude: number
   longitude: number
   latitudeDelta: number
   longitudeDelta: number
-}
-
-interface Props {
-  navigation: NavigationProp
 }
 
 const SF = {
@@ -25,6 +24,7 @@ const SF = {
   longitudeDelta: 0.0421,
 }
 
+// temporary, will move everything to databases
 const DATA = [
   {
     id: 1,
@@ -38,36 +38,8 @@ const DATA = [
 function Map(props: Props) {
   const [error, setError] = React.useState<string>('')
   const [region, setRegion] = React.useState<Region>(SF)
-  const map = React.useRef()
 
-  React.useEffect(() => {
-    async function helper() {
-      const { status } = await Permissions.askAsync(Permissions.LOCATION)
-
-      if (status !== 'granted') {
-        // handle errors here
-        return
-      }
-
-      // handle no permission (granted)
-
-      await findMe()
-    }
-    helper()
-  }, [])
-
-  async function findMe() {
-    const {
-      coords: { longitude, latitude },
-    } = await Location.getCurrentPositionAsync({})
-
-    const myRegion = { ...region, longitude, latitude }
-
-    // @ts-ignore
-    map.current.animateToRegion(myRegion, 1000)
-
-    setRegion(myRegion)
-  }
+  const { findMe, map } = useMap(region, setRegion)
 
   return (
     <>
