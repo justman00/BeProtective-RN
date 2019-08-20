@@ -30,7 +30,7 @@ const Form = (props: Props) => {
         style={{ flex: 1 }}
         behavior='position'
         enabled
-        keyboardVerticalOffset={5}
+        // keyboardVerticalOffset={5}
       >
         <Container>
           <GoBack onPress={goBack}>
